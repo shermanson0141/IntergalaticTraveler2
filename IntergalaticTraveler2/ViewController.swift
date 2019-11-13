@@ -17,11 +17,14 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let data = colorTextField.text,data != "Blue or Red" {
+        if let data = colorTextField.text, data == "Blue" || data == "Red" {
             let NVC = segue.destination as! SecondViewController
             NVC.starColor = data
         } else {
-            let alert = UIAlertController (title: "Error", message: "There was no data", preferredStyle: .alert)
+            
+            let message = "You will not be transported through the wormhole since you could not follow simple directions."
+            
+            let alert = UIAlertController (title: "Error", message: message, preferredStyle: .alert)
             let button = UIAlertAction (title: "Ok", style: .default, handler: nil)
             alert.addAction(button)
             present(alert, animated: true, completion: nil)
